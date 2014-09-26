@@ -233,7 +233,6 @@ if [ "$SKIPINIT" -ne "1" ]; then
   fi
   VACUUMSTART=`$RESULTPSQL -A -t -c "SELECT now()"`
   $TESTPSQL -c "VACUUM"
-  $TESTPSQL -c "CHECKPOINT"
   $RESULTPSQL -q -c "UPDATE tests SET cleanup = now() - '$VACUUMSTART'::timestamptz WHERE test = $TEST"
 fi
 
